@@ -1,6 +1,6 @@
 package edu.fltoshi.IntegerList;
 
-import edu.fltoshi.IntegerList.interfeic.IntegerList;
+import edu.fltoshi.IntegerList.intrface.IntegerList;
 
 import java.util.Arrays;
 
@@ -8,7 +8,7 @@ public class IntegerListing implements IntegerList {
     public Integer[] array;
     private int size;
 
-    public IntegerListing(int capacity) {
+    public IntegerListing(Integer capacity) {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Емкость должна быть больше 0.");
         }
@@ -19,7 +19,7 @@ public class IntegerListing implements IntegerList {
     @Override
     public Integer add(Integer item) {
         if (item == null) {
-            throw new IllegalArgumentException("Элемент не может быть нулевым");
+            throw new IllegalArgumentException("Элемент не может быть пустым!");
 
         }
         if (size == array.length) {
@@ -32,10 +32,10 @@ public class IntegerListing implements IntegerList {
     @Override
     public Integer add(int index, Integer item) {
         if (item == null) {
-            throw new IllegalArgumentException("Элемент не может быть нулевым");
+            throw new IllegalArgumentException("Элемент не может быть пустым!");
         }
         if (index < 0 || index > size) {
-            throw new ArrayIndexOutOfBoundsException("Индекс выходит за пределы");
+            throw new ArrayIndexOutOfBoundsException("Индекс выходит за пределы массива.");
         }
         if (size == array.length) {
             grow();
@@ -50,10 +50,10 @@ public class IntegerListing implements IntegerList {
     @Override
     public Integer set(int index, Integer item) {
         if (item == null) {
-            throw new IllegalArgumentException("Элемент не может быть нулевым");
+            throw new IllegalArgumentException("Элемент не может быть пустым!");
         }
         if (index < 0 || index >= size) {
-            throw new ArrayIndexOutOfBoundsException("Индекс выходит за пределы");
+            throw new ArrayIndexOutOfBoundsException("Индекс выходит за пределы массива.");
         }
         Integer replacedItem = array[index];
         array[index] = item;
@@ -62,7 +62,7 @@ public class IntegerListing implements IntegerList {
     @Override
     public Integer remove(Integer item) {
         if (item == null) {
-            throw new IllegalArgumentException("Элемент не может быть нулевым");
+            throw new IllegalArgumentException("Элемент не может быть пустым!");
         }
         for (int i = 0; i < size; i++) {
             if (array[i].equals(item)) {
@@ -75,12 +75,12 @@ public class IntegerListing implements IntegerList {
                 return item;
             }
         }
-        throw new IllegalArgumentException("Элемент не найден в списке");
+        throw new IllegalArgumentException("Элемент не найден в массиве.");
     }
     @Override
     public Integer remove(int index) {
         if (index < 0 || index >= size) {
-            throw new ArrayIndexOutOfBoundsException("Индекс выходит за пределы");
+            throw new ArrayIndexOutOfBoundsException("Индекс выходит за пределы массива.");
         }
         Integer removedItem = array[index];
         for (int i = index; i < size - 1; i++) {
@@ -90,6 +90,7 @@ public class IntegerListing implements IntegerList {
         size--;
         return removedItem;
     }
+
     @Override
     public boolean contains(Integer item) {
         for (int i = 0; i < size; i++) {
@@ -100,6 +101,7 @@ public class IntegerListing implements IntegerList {
         return false;
 
     }
+
     @Override
     public int indexOf(Integer item) {
         for (int i = 0; i < size; i++) {
@@ -118,17 +120,18 @@ public class IntegerListing implements IntegerList {
         }
         return -1;
     }
+
     @Override
     public Integer get(int index) {
         if (index < 0 || index >= size) {
-            throw new ArrayIndexOutOfBoundsException("Индекс выходит за пределы");
+            throw new ArrayIndexOutOfBoundsException("Индекс выходит за пределы массива");
         }
         return array[index];
     }
     @Override
     public boolean equals(IntegerList otherList) {
         if (otherList == null) {
-            throw new IllegalArgumentException("Другой cписок не может быть нулевым");
+            throw new IllegalArgumentException("Другой cписок не может быть пустым!");
         }
         if (this.size() != otherList.size()) {
             return false;

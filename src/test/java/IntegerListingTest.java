@@ -6,9 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class IntegerListingTest {
-
     @Test
-    @DisplayName("Создание массива.")
+    @DisplayName("Создание нового массива чисел.")
     public void arrayCreation() {
         final IntegerListing[] trup = new IntegerListing[1];
 
@@ -64,7 +63,7 @@ class IntegerListingTest {
     @Test
     @DisplayName("Удаление из массива элемента без индекса.")
     public void removeElementWithoutIndexFromArray() {
-        IntegerListing list = new IntegerListing(1);
+        IntegerListing list = new IntegerListing(2);
         list.add(0);
 
         assertEquals(list.get(0), list.remove(0));
@@ -92,7 +91,6 @@ class IntegerListingTest {
         assertEquals(list.indexOf(2), 1);
         assertEquals(-1, list.indexOf(5));
     }
-
 
     @Test
     @DisplayName("Поиск элемента в массиве с его конца.")
@@ -134,7 +132,7 @@ class IntegerListingTest {
         list2.add(5);
         list2.add(2);
 
-        assertFalse(list.equals(list2)); // Проверка на неравенство двух списков
+        assertFalse(list2.equals(list)); // Проверка на неравенство двух списков
     }
 
     @Test
@@ -143,7 +141,7 @@ class IntegerListingTest {
         IntegerListing list = new IntegerListing(5);
         list.add(0, 0);
 
-//        assertEquals(list.get(0), list.contains(0[], 0));
+        assertTrue(list.contains(0));
     }
 
     @Test
@@ -160,6 +158,7 @@ class IntegerListingTest {
     @Test
     @DisplayName("Быстрая сортировка")
     public void quickSortTest(){
+        IntegerListing[] list;
     }
 
     @Test
@@ -198,7 +197,10 @@ class IntegerListingTest {
     @Test
     @DisplayName("Проверка на увеличение места при заполнении")
     public void grow() {
-        IntegerListing list = new IntegerListing(1);
-        list.add(0);
+    }
+
+    @Test
+    @DisplayName("Проверка сортировки элементов в массиве.")
+    public void quickElementSort () {
     }
 }

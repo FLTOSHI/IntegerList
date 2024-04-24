@@ -1,4 +1,4 @@
-package edu.fltoshi.IntegerList.interfeic;
+package edu.fltoshi.IntegerList.intrface;
 
 public interface IntegerList {
     Integer add(Integer item);
@@ -28,4 +28,8 @@ public interface IntegerList {
     void clear();
 
     Integer[] toArray();
+
+    void quickSort(int[] arr, int begin, int end);
+
+    boolean contains(int[] arr, int element);
 }
